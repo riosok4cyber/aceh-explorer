@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Aceh Explorer</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#eef4f7;
+}
+
+header{
+background:#0a6ebd;
+color:white;
+padding:18px;
+text-align:center;
+font-size:24px;
+}
+
+.search{
+padding:10px;
+text-align:center;
+}
+
+input{
+width:85%;
+padding:10px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.container{
+padding:10px;
+}
+
+.card{
+background:white;
+margin:10px;
+padding:12px;
+border-radius:12px;
+box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+button{
+padding:8px 12px;
+border:none;
+border-radius:6px;
+margin-top:5px;
+background:#0a6ebd;
+color:white;
+}
+
+.star{
+color:orange;
+font-size:18px;
+}
+
+.fav{
+background:red;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>🌊 Aceh Explorer</header>
+
+<div class="search">
+<input type="text" id="search" placeholder="Cari wisata..." onkeyup="searchPlace()">
+</div>
+
+<div class="container" id="places">
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Baiturrahman_Grand_Mosque.jpg">
+<h3>Masjid Raya Baiturrahman</h3>
+<p>Ikon wisata religi Aceh.</p>
+
+<div class="star">⭐⭐⭐⭐⭐</div>
+
+<button onclick="map('Masjid Raya Baiturrahman Banda Aceh')">Map</button>
+<button class="fav" onclick="fav(this)">❤️ Favorit</button>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Iboih_beach_sabang.jpg">
+<h3>Pantai Iboih</h3>
+<p>Pantai terkenal untuk snorkeling.</p>
+
+<div class="star">⭐⭐⭐⭐</div>
+
+<button onclick="map('Pantai Iboih Sabang')">Map</button>
+<button class="fav" onclick="fav(this)">❤️ Favorit</button>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Lampuuk_beach.jpg">
+<h3>Pantai Lampuuk</h3>
+<p>Pantai pasir putih populer.</p>
+
+<div class="star">⭐⭐⭐⭐</div>
+
+<button onclick="map('Pantai Lampuuk Aceh Besar')">Map</button>
+<button class="fav" onclick="fav(this)">❤️ Favorit</button>
+</div>
+
+<div class="card">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Zero_kilometer_indonesia.jpg">
+<h3>Tugu Nol Kilometer</h3>
+<p>Titik paling barat Indonesia.</p>
+
+<div class="star">⭐⭐⭐⭐⭐</div>
+
+<button onclick="map('Tugu Nol Kilometer Sabang')">Map</button>
+<button class="fav" onclick="fav(this)">❤️ Favorit</button>
+</div>
+
+</div>
+
+<script>
+
+function map(place){
+window.open("https://www.google.com/maps/search/"+place);
+}
+
+function fav(btn){
+btn.innerHTML="❤️ Disimpan";
+}
+
+function searchPlace(){
+
+let input=document.getElementById("search").value.toLowerCase();
+let cards=document.getElementsByClassName("card");
+
+for(let i=0;i<cards.length;i++){
+
+let text=cards[i].innerText.toLowerCase();
+
+if(text.includes(input)){
+cards[i].style.display="block";
+}else{
+cards[i].style.display="none";
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
